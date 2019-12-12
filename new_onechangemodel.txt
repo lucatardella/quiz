@@ -1,0 +1,11 @@
+model{
+  for(year in 1:N){
+    T[year] <- year+1850
+    D[year]~dpois(theta[year])
+    log(theta[year])<-b[1]+step(year-changeyear)*b[2]
+  }
+  for(j in 1:2){b[j]~dnorm(0,0.0001)}
+  actual<-changeyear+1850
+  changeyear ~ dunif(1,N)
+}
+

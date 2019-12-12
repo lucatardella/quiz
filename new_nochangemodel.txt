@@ -1,0 +1,8 @@
+model{
+  for(year in 1:N){
+    D[year]~dpois(lambda)
+  }
+  lambda~dgamma(1,1)
+}
+
+
